@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://cxtciyp13x31q"]
+
+[ext_resource type="Script" path="res://scripts/turtlesection.gd" id="1_hh084"]
+
+[node name="turtlesection" type="Node2D"]
+script = ExtResource("1_hh084")
