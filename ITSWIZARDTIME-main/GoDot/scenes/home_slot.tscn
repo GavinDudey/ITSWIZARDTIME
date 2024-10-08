@@ -1,0 +1,28 @@
+[gd_scene load_steps=5 format=3 uid="uid://70l41cvkdqyh"]
+
+[ext_resource type="Script" path="res://scripts/home_slot.gd" id="1_3rtrq"]
+[ext_resource type="Texture2D" uid="uid://e8xh4gxdd4x4" path="res://Assets/Home.png" id="1_m7sao"]
+[ext_resource type="Texture2D" uid="uid://mia2kqpga18m" path="res://Assets/HomeFrog.png" id="2_56qe7"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jd7qd"]
+size = Vector2(14, 10.5)
+
+[node name="HomeSlot" type="Area2D"]
+script = ExtResource("1_3rtrq")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture_filter = 1
+texture = ExtResource("1_m7sao")
+
+[node name="HomeFrogSprite" type="Sprite2D" parent="."]
+visible = false
+texture_filter = 1
+position = Vector2(0, 3)
+scale = Vector2(0.8, 0.8)
+texture = ExtResource("2_56qe7")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 0.75)
+shape = SubResource("RectangleShape2D_jd7qd")
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]

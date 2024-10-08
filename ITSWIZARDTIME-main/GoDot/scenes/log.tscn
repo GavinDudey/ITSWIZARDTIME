@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://t341bhjr3urg"]
+
+[ext_resource type="Script" path="res://scripts/log.gd" id="1_wsfqv"]
+
+[node name="log" type="Node2D"]
+script = ExtResource("1_wsfqv")

@@ -1,0 +1,54 @@
+[gd_scene load_steps=4 format=3 uid="uid://cppa0woh0grqa"]
+
+[ext_resource type="Script" path="res://scripts/ui.gd" id="1_0moj5"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_c1u2g"]
+bg_color = Color(0.933333, 0, 0.223529, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_f8mvw"]
+bg_color = Color(0.00510528, 0.728447, 5.77569e-07, 1)
+
+[node name="UI" type="CanvasLayer"]
+script = ExtResource("1_0moj5")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 8
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+size_flags_vertical = 8
+alignment = 1
+
+[node name="lifeContainer" type="HBoxContainer" parent="MarginContainer/HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="timerContainer" type="HBoxContainer" parent="MarginContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 10
+
+[node name="Label" type="Label" parent="MarginContainer/HBoxContainer/timerContainer"]
+layout_mode = 2
+text = "Time:
+"
+
+[node name="ProgressBar" type="ProgressBar" parent="MarginContainer/HBoxContainer/timerContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(400, 30)
+layout_mode = 2
+theme_override_styles/background = SubResource("StyleBoxFlat_c1u2g")
+theme_override_styles/fill = SubResource("StyleBoxFlat_f8mvw")
+max_value = 30.0
+value = 30.0
+fill_mode = 1
+show_percentage = false
+
+[node name="timeout Timer" type="Timer" parent="."]
