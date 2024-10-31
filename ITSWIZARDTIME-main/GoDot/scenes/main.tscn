@@ -1,21 +1,22 @@
-[gd_scene load_steps=17 format=3 uid="uid://cnsmmktomegy4"]
+[gd_scene load_steps=18 format=3 uid="uid://cnsmmktomegy4"]
 
 [ext_resource type="PackedScene" uid="uid://3a1r0lkcjdnj" path="res://scenes/sidewalk.tscn" id="1_blvsu"]
 [ext_resource type="PackedScene" uid="uid://c8x3g8plnld83" path="res://scenes/water.tscn" id="1_uh56o"]
 [ext_resource type="PackedScene" uid="uid://cuex5om55bqjy" path="res://scenes/player.tscn" id="2_5geyb"]
 [ext_resource type="PackedScene" uid="uid://blc3ddhbp18st" path="res://scenes/highway_lane.tscn" id="3_gfkn0"]
 [ext_resource type="Script" path="res://scripts/highway_lanes.gd" id="4_cnkwe"]
-[ext_resource type="Texture2D" uid="uid://dkn60s177tkov" path="res://Assets/Car1.png" id="4_utjs4"]
-[ext_resource type="Texture2D" uid="uid://bt2qg5sat24m5" path="res://Assets/Car2.png" id="5_ad1ge"]
-[ext_resource type="Texture2D" uid="uid://b1ojjehexcr00" path="res://Assets/Car3.png" id="6_iw8nb"]
-[ext_resource type="Texture2D" uid="uid://bjmylrthev4gi" path="res://Assets/Car4.png" id="7_y123u"]
-[ext_resource type="Texture2D" uid="uid://fwv4seydp6fb" path="res://Assets/Car5.png" id="8_7f5i0"]
+[ext_resource type="Texture2D" uid="uid://b7aracrspimjt" path="res://Assets/Deer1.png" id="7_15ayq"]
+[ext_resource type="Texture2D" uid="uid://bpypcrssurk1m" path="res://Assets/Deer5.png" id="8_08vl3"]
+[ext_resource type="Texture2D" uid="uid://c2ttgffdim277" path="res://Assets/Deer4.png" id="9_c87qm"]
+[ext_resource type="Texture2D" uid="uid://c1ldmeucmmu53" path="res://Assets/Deer3.png" id="10_1avrx"]
 [ext_resource type="PackedScene" uid="uid://bfmjbv6c76ouf" path="res://scenes/waterlane.tscn" id="10_eex2u"]
+[ext_resource type="Texture2D" uid="uid://cb1ve2xiwnvgs" path="res://Assets/Deer2.png" id="11_85taf"]
 [ext_resource type="PackedScene" uid="uid://0o6c3600a1k3" path="res://scenes/turtlelane.tscn" id="11_c4kex"]
 [ext_resource type="Script" path="res://scripts/GameStateManager.gd" id="13_tlqdv"]
 [ext_resource type="Script" path="res://scripts/HomeSlots.gd" id="14_eu8f5"]
 [ext_resource type="PackedScene" uid="uid://70l41cvkdqyh" path="res://scenes/home_slot.tscn" id="14_tonph"]
 [ext_resource type="PackedScene" uid="uid://cppa0woh0grqa" path="res://scenes/ui.tscn" id="16_8mc6h"]
+[ext_resource type="PackedScene" uid="uid://dfc3w7g5e37li" path="res://scenes/tile_map.tscn" id="17_5vglv"]
 
 [node name="main" type="Node"]
 
@@ -34,7 +35,7 @@ position = Vector2(0, 34)
 [node name="Camera2D" type="Camera2D" parent="."]
 
 [node name="player" parent="." node_paths=PackedStringArray("camera") instance=ExtResource("2_5geyb")]
-z_index = 1
+z_index = 2
 position = Vector2(0, 418)
 scale = Vector2(5, 5)
 camera = NodePath("../Camera2D")
@@ -43,37 +44,42 @@ camera = NodePath("../Camera2D")
 script = ExtResource("4_cnkwe")
 
 [node name="highwayLANE" parent="highwaylanes" instance=ExtResource("3_gfkn0")]
+z_index = 1
 position = Vector2(0, 364)
 direction = -1
-vehicle_texture = ExtResource("4_utjs4")
+vehicle_texture = ExtResource("7_15ayq")
 movement_x_limit = -480
 
 [node name="highwayLANE2" parent="highwaylanes" instance=ExtResource("3_gfkn0")]
+z_index = 1
 position = Vector2(0, 300)
-vehicle_texture = ExtResource("5_ad1ge")
+vehicle_texture = ExtResource("8_08vl3")
 vehicle_count = 4
 distance_between_vehicles = 150
 speed = 250
 
 [node name="highwayLANE3" parent="highwaylanes" instance=ExtResource("3_gfkn0")]
+z_index = 1
 position = Vector2(0, 236)
 direction = -1
-vehicle_texture = ExtResource("6_iw8nb")
+vehicle_texture = ExtResource("9_c87qm")
 vehicle_count = 2
 distance_between_vehicles = 300
 movement_x_limit = -480
 
 [node name="highwayLANE4" parent="highwaylanes" instance=ExtResource("3_gfkn0")]
+z_index = 1
 position = Vector2(0, 172)
-vehicle_texture = ExtResource("7_y123u")
+vehicle_texture = ExtResource("10_1avrx")
 distance_between_vehicles = 500
 speed = 500
 movement_x_limit = 600
 
 [node name="highwayLANE5" parent="highwaylanes" instance=ExtResource("3_gfkn0")]
+z_index = 1
 position = Vector2(0, 108)
 direction = -1
-vehicle_texture = ExtResource("8_7f5i0")
+vehicle_texture = ExtResource("11_85taf")
 vehicle_count = 2
 distance_between_vehicles = 300
 speed = 160
@@ -82,30 +88,36 @@ movement_x_limit = -480
 [node name="waterlanes" type="Node" parent="."]
 
 [node name="waterlane" parent="waterlanes" instance=ExtResource("10_eex2u")]
+z_index = 1
 position = Vector2(0, -30)
 logs_length = [2, 4, 6]
 distance_between_logs = 300
 speed = 250
 
 [node name="waterlane2" parent="waterlanes" instance=ExtResource("10_eex2u")]
+z_index = 1
 position = Vector2(0, -94)
 logs_length = [5, 3]
 movement_x_limit = -720
 movement_direction = -1
 
 [node name="waterlane3" parent="waterlanes" instance=ExtResource("10_eex2u")]
+z_index = 1
 position = Vector2(0, -158)
 
 [node name="waterlane4" parent="waterlanes" instance=ExtResource("10_eex2u")]
+z_index = 1
 position = Vector2(0, -286)
 logs_length = [4, 3, 4]
 distance_between_logs = 100
 speed = 150
 
 [node name="turtlelane" parent="waterlanes" instance=ExtResource("11_c4kex")]
+z_index = 1
 position = Vector2(0, -222)
 
 [node name="turtlelane2" parent="waterlanes" instance=ExtResource("11_c4kex")]
+z_index = 1
 position = Vector2(0, -350)
 distance_between_sections = 80
 speed = 175
@@ -138,3 +150,14 @@ scale = Vector2(4, 4)
 [node name="HomeSlot5" parent="HomeSlots" instance=ExtResource("14_tonph")]
 position = Vector2(0, -402)
 scale = Vector2(3, 3)
+
+[node name="TileMap" parent="." instance=ExtResource("17_5vglv")]
+scale = Vector2(3.063, 3.063)
+layer_0/name = "Back"
+layer_0/tile_data = PackedInt32Array(-11, 65536, 2, -10, 65536, 2, -9, 65536, 2, -8, 65536, 2, -7, 65536, 2, -6, 65536, 2, -5, 65536, 2, -4, 65536, 2, -3, 65536, 2, -2, 65536, 2, -1, 65536, 2, -65536, 65536, 2, -65535, 65536, 2, -65534, 65536, 2, -65533, 65536, 2, -65532, 65536, 2, -65531, 65536, 2, -65530, 65536, 2, -65529, 65536, 2, -65528, 65536, 2, -65527, 65536, 2, -65526, 65536, 2, 131061, 65536, 0, 131062, 65536, 0, 131063, 65536, 0, 131064, 65536, 0, 131065, 65536, 0, 131066, 65536, 0, 131067, 65536, 0, 131068, 65536, 0, 131069, 65536, 0, 131070, 65536, 0, 131071, 65536, 0, 65536, 65536, 0, 65537, 65536, 0, 65538, 65536, 0, 65539, 65536, 0, 65540, 65536, 0, 65541, 65536, 0, 65542, 65536, 0, 65543, 65536, 0, 65544, 65536, 0, 65545, 65536, 0, 65546, 65536, 0, 65525, 458752, 0, 65526, 327680, 2, 65527, 393216, 0, 65528, 327680, 2, 65529, 327680, 2, 65530, 393216, 0, 65531, 524288, 0, 65532, 327680, 2, 65533, 458752, 2, 65534, 327680, 2, 65535, 327680, 2, 0, 327680, 2, 1, 458752, 0, 2, 327680, 2, 3, 327680, 2, 4, 327680, 2, 5, 327680, 2, 6, 393216, 0, 7, 327680, 2, 8, 327680, 2, 9, 524288, 0, 10, 327680, 2, 196597, 65536, 1, 262133, 65536, 1, 327669, 65536, 1, 393205, 65536, 1, 458741, 65536, 1, 524277, 65536, 2, 524278, 65536, 2, 458742, 65536, 1, 393206, 65536, 1, 327670, 393216, 1342177281, 262134, 65536, 1, 196598, 393216, 805306369, 196599, 65536, 1, 262135, 65536, 1, 327671, 65536, 1, 393207, 65536, 1, 458743, 393216, 1610612737, 524279, 65536, 2, 524280, 65536, 2, 458744, 65536, 1, 393208, 524288, 1, 327672, 65536, 1, 262136, 458752, 1, 196600, 65536, 1, 196601, 65536, 1, 262137, 65536, 1, 327673, 65536, 1, 393209, 65536, 1, 458745, 65536, 1, 524282, 65536, 2, 524281, 65536, 2, 327674, 65536, 1, 262138, 65536, 1, 196602, 524288, 805306369, 393210, 65536, 1, 458746, 65536, 1, 458747, 65536, 1, 393211, 458752, 1, 327675, 65536, 1, 262139, 65536, 1, 196603, 65536, 1, 524283, 65536, 2, 524284, 65536, 2, 458748, 65536, 1, 393212, 65536, 1, 327676, 65536, 1, 262140, 65536, 1, 196604, 65536, 1, 196605, 65536, 1, 262141, 458752, 1342177281, 327677, 393216, 1, 393213, 65536, 1, 458749, 65536, 1, 524285, 65536, 2, 524286, 65536, 2, 458750, 65536, 1, 393214, 65536, 1, 327678, 65536, 1, 262142, 65536, 1, 196606, 65536, 1, 196607, 65536, 1, 262143, 65536, 1, 327679, 65536, 1, 393215, 65536, 1, 458751, 65536, 1, 524287, 65536, 2, 458752, 65536, 2, 393216, 393216, 1, 196608, 65536, 1, 131072, 65536, 1, 262144, 65536, 1, 327680, 65536, 1, 393217, 65536, 1, 327681, 65536, 1, 262145, 524288, 1610612737, 196609, 65536, 1, 131073, 65536, 1, 458753, 65536, 2, 458754, 65536, 2, 393218, 65536, 1, 327682, 65536, 1, 262146, 65536, 1, 196610, 65536, 1, 131074, 65536, 1, 131075, 458752, 805306369, 196611, 65536, 1, 262147, 65536, 1, 327683, 65536, 1, 393219, 65536, 1, 458755, 65536, 2, 458756, 65536, 2, 458757, 65536, 2, 393221, 65536, 1, 327685, 65536, 1, 262148, 65536, 1, 196612, 65536, 1, 131076, 65536, 1, 327684, 65536, 1, 393220, 65536, 1, 196613, 458752, 1, 131077, 65536, 1, 131078, 65536, 1, 196614, 65536, 1, 262150, 65536, 1, 327686, 65536, 1, 393222, 524288, 1, 458758, 65536, 2, 262149, 65536, 1, 393223, 65536, 1, 458759, 65536, 2, 327687, 65536, 1, 262151, 393216, 1, 196615, 65536, 1, 131079, 65536, 1, 131080, 524288, 1610612737, 196616, 65536, 1, 262152, 524288, 1342177281, 327688, 65536, 1, 393224, 65536, 1, 458760, 65536, 2, 458761, 65536, 2, 393225, 65536, 1, 327689, 65536, 1, 262153, 65536, 1, 196617, 65536, 1, 131081, 65536, 1, 131082, 65536, 1, 196618, 65536, 1, 262154, 65536, 1, 327690, 65536, 1, 393226, 458752, 805306369, 458762, 65536, 2, 589813, 327680, 2, 589814, 524288, 0, 589815, 327680, 2, 589816, 327680, 2, 589817, 327680, 2, 589818, 327680, 2, 589819, 327680, 2, 589820, 393216, 0, 589821, 524288, 2, 589822, 327680, 2, 589823, 327680, 2, 524288, 327680, 2, 524289, 327680, 2, 524290, 327680, 2, 524291, 327680, 2, 524292, 327680, 2, 524293, 458752, 0, 524294, 327680, 2, 524295, 327680, 2, 524296, 327680, 2, 524297, 327680, 2, 524298, 327680, 2, 589834, 327680, 2, 589833, 393216, 2, 589832, 327680, 2, 589831, 327680, 2, 589830, 327680, 2, 589829, 327680, 2, 589828, 327680, 2, 589827, 327680, 2, 589826, 327680, 2, 589825, 458752, 2, 589824, 327680, 2, 655351, 327680, 2, 655350, 458752, 2, 655349, 327680, 2, 655352, 458752, 0, 655353, 327680, 2, 655354, 327680, 2, 655355, 327680, 2, 655356, 327680, 2, 655357, 327680, 2, 655358, 327680, 2, 655359, 327680, 2)
+layer_1/name = "front"
+layer_1/z_index = 1
+layer_1/tile_data = PackedInt32Array(524281, 589824, 0, 589817, 589824, 1, 655353, 589824, 2, 524282, 655360, 0, 589818, 655360, 1, 655354, 655360, 2, -131065, 589824, 0, -65529, 589824, 1, 7, 589824, 2, -131064, 655360, 0, -65528, 655360, 1, 8, 655360, 2, -65544, 589824, 0, -8, 589824, 1, 65528, 589824, 2, -65543, 655360, 0, -7, 655360, 1, 65529, 655360, 2, -655371, 589824, 0, -589835, 589824, 1, -524299, 589824, 2, -655370, 655360, 0, -589834, 655360, 1, -524298, 655360, 2, -720886, 589824, 0, -655350, 589824, 1, -589814, 589824, 2, -720885, 655360, 0, -655349, 655360, 1, -589813, 655360, 2)
+layer_2/name = "BACKABACK"
+layer_2/z_index = -1
+layer_2/tile_data = PackedInt32Array(-458763, 65536, 0, -458762, 65536, 0, -458761, 65536, 0, -458760, 65536, 0, -458759, 65536, 0, -458758, 65536, 0, -458757, 65536, 0, -458756, 65536, 0, -458755, 65536, 0, -458754, 65536, 0, -458753, 65536, 0, -524288, 65536, 0, -524287, 65536, 0, -524286, 65536, 0, -524285, 65536, 0, -524284, 65536, 0, -524283, 65536, 0, -524282, 65536, 0, -524281, 65536, 0, -524280, 65536, 0, -524279, 65536, 0, -524278, 65536, 0, -524299, 327680, 0, -524298, 524288, 0, -524297, 327680, 0, -524296, 327680, 0, -524295, 327680, 0, -524294, 327680, 0, -524293, 327680, 0, -524292, 327680, 0, -524291, 327680, 0, -524290, 327680, 0, -524289, 327680, 0, -589824, 327680, 0, -589823, 327680, 0, -589822, 327680, 0, -589821, 327680, 0, -589820, 327680, 0, -589819, 327680, 0, -589818, 327680, 0, -589817, 327680, 0, -589816, 327680, 0, -589815, 524288, 0, -589814, 327680, 0, -589835, 327680, 0, -589834, 327680, 0, -589833, 327680, 0, -589832, 327680, 0, -589831, 327680, 0, -589830, 327680, 0, -589829, 327680, 0, -589828, 327680, 0, -589827, 327680, 0, -589826, 327680, 0, -589825, 327680, 0, -655360, 327680, 0, -655359, 327680, 0, -655358, 327680, 0, -655357, 327680, 0, -655356, 327680, 0, -655355, 327680, 0, -655354, 327680, 0, -655353, 327680, 0, -655352, 327680, 0, -655351, 327680, 0, -655350, 327680, 0)

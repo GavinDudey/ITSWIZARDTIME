@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://c8x3g8plnld83"]
 
 [ext_resource type="Script" path="res://scripts/water.gd" id="1_5webs"]
-[ext_resource type="Texture2D" uid="uid://bdt1b4eyibx1l" path="res://Assets/Water.png" id="1_j2h18"]
+[ext_resource type="Texture2D" uid="uid://cy4r5elkchk0f" path="res://Assets/Tiles/tile_0037.png" id="2_ryss8"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qy3v1"]
 size = Vector2(108, 64)
@@ -10,9 +10,11 @@ size = Vector2(108, 64)
 script = ExtResource("1_5webs")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+texture_filter = 1
 texture_repeat = 2
-scale = Vector2(4, 4)
-texture = ExtResource("1_j2h18")
+position = Vector2(-1.07288e-06, 0)
+scale = Vector2(5.125, 4)
+texture = ExtResource("2_ryss8")
 region_enabled = true
 region_rect = Rect2(0, 0, 16, 16)
 
